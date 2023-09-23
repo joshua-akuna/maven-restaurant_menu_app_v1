@@ -5,8 +5,8 @@ The tasks performed in the restaurant includes:
 1. Each table has a tablet that can be used to place orders.
 2. While an order is being prepared, the tablet show ads.
 3. At the end of the business day, various statistics can be reviewed.
-   a. cook utilization
-   b. total revenue from orders
-   c. Total revenue from add impressions
+   * cook utilization
+   * total revenue from orders
+   * Total revenue from add impressions
 
 For this project, a kernel would be developed (without a GUI). In addition, we will hardcode some data.
