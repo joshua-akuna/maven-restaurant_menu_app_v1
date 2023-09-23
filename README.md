@@ -1,4 +1,4 @@
-# Task: restaurant.Restaurant Menu in Java and Maven
+# Task: Restaurant Menu Program in Java and Maven
 The purpose of this project is to automate the activities of a restaurant.
 
 The tasks performed in the restaurant includes:
