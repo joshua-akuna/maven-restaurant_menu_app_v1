@@ -1,7 +1,4 @@
-import restaurant.ConsoleHelper;
-import restaurant.kitchen.Dish;
-import java.io.IOException;
-import java.util.List;
+import restaurant.Restaurant;
 
 /**
  * <h2>restaurant menu app!<h2/>
@@ -31,17 +28,23 @@ import java.util.List;
  * <h3>Third:</h3>
  * - Calculate the statistics
  * - Display the statistics to the manager
- *
+ * <p>
  * NOTE: THIS APP WAS BUILT BASED ON A TASKS ON CODE-GYM
  *
  * @author Akuna Joshua
  * @version 1.0.0
+ * @since 2023-09-21
  */
 public class src {
-    public static void main(String[] args) throws IOException {
-        List<Dish> dishes = ConsoleHelper.getAllDishesForOrder();
-
-        for (Dish dish : dishes)
-            ConsoleHelper.writeMessage(dish.toString());
+    /**
+     * Creates a Restaurant instance and get 4 customers order
+     * @param args Unused
+     */
+    public static void main(String[] args) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.getOrder();
+        restaurant.getOrder();
+        restaurant.getOrder();
+        restaurant.getOrder();
     }
 }

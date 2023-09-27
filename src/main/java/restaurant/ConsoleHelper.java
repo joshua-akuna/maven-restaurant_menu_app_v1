@@ -10,6 +10,10 @@ import java.util.List;
 /**
  * <h2>ConsoleHelper!</h2>
  * This class defines a simple text console which the customer interacts with.
+ *
+ * @author Akuna Joshua
+ * @version 1.0.0
+ * @since 2023-09-21
  */
 public class ConsoleHelper {
     private static final BufferedReader br =
@@ -36,18 +40,26 @@ public class ConsoleHelper {
 
     /**
      * Takes user input for each dish order, processes the input and if valid adds the dish to a list.
+     * <p></p>
+     * The method asks the customer to select a dish from a list of dishes displayed and adds it to the list.
+     * Display a list of all the dishes and ask the customer to enter a string (the name of the dish)
+     * The customer enters 'exit' to indicate the order is complete
+     * If the entered dish is not on the menu, display a message stating that there is no such dish and continue taking order.
+     * Rethrows IO exceptions.
+     *
      * @return dishes: a list of dishes ordered by the customer
      * @throws IOException errors handling user inputs
      */
     public static List<Dish> getAllDishesForOrder() throws IOException {
         List<Dish> dishes = new ArrayList<>();
         boolean found;
+        String prompt;
+        ConsoleHelper.writeMessage("======================= NEW ORDER =========================");
         // displays a list of the menu to the customer
         ConsoleHelper.writeMessage(Dish.allDishesToString());
-        ConsoleHelper.writeMessage("Please type a menu" +
-                " item then enter to add it to the order or enter exit to " +
-                " complete the order.");
-        System.out.format("=> ");
+        ConsoleHelper.writeMessage("Please enter a dish" +
+                " and press enter or enter exit to complete order.");
+        System.out.format("Enter new dish here or exit => ");
         String newDish = readString();
         while (!newDish.trim().equalsIgnoreCase("exit")){
             found = false;
@@ -57,14 +69,20 @@ public class ConsoleHelper {
                     break;
                 }
             }
-            if (found)
+            if (found) {
                 dishes.add(Dish.valueOf(newDish.toUpperCase()));
-            else
+            }
+            else {
+                prompt = newDish.trim().isBlank() ? "No dish selected" :
+                        String.format("%s is not available", newDish);
                 ConsoleHelper.writeMessage(String.format(
-                        "%s not found in Menu\nEnter a valid Menu dish.", newDish));
-            System.out.format("=> ");
+                        "%s , select a dish from the menu displayed.", prompt));
+                ConsoleHelper.writeMessage(Dish.allDishesToString());
+            }
+            System.out.format("Enter a dish here or exit => ");
             newDish = readString();
         }
+        ConsoleHelper.writeMessage("======================= ORDER COMPLETE =========================");
         return dishes;
     }
 }
